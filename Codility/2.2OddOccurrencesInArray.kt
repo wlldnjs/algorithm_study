@@ -1,15 +1,15 @@
 /**
     https://app.codility.com/programmers/lessons/2-arrays/odd_occurrences_in_array/
-    Task Score: 77%(Correctness: 100%, Performance: 50%)
+    Task Score: 88%(Correctness: 100%, Performance: 75%)
 */
-
 fun solution(A: IntArray): Int {
-    A.sort()
-    val lastIndex = A.size % 2
-    for(i in 0 until (A.size - lastIndex) step 2){
-        if(A[i] != A[i+1]){
-            return A[i]
+    val set = HashSet<Int>()
+    for(i in A.indices){
+        if(set.contains(A[i])){
+            set.remove(A[i])
+        } else {
+            set.add(A[i])
         }
     }
-    return A[A.size - 1]
+    return set.first()
 }
