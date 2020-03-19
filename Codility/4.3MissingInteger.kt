@@ -1,19 +1,14 @@
 /**
     https://app.codility.com/programmers/lessons/4-counting_elements/missing_integer/
-    Task Score: 66%(Correctness: 100%, Performance: 25%)
+    Task Score: 100%(Correctness: 100%, Performance: 100%)
 */
 fun solution(A: IntArray): Int {
-    val newArray = A.filter{item -> item > 0}
-    val hashSet = HashSet<Int>(newArray)
+    val set = A.toHashSet()
     
-    var count = 1
-    for(i in hashSet){
-        if(i == count){
-            count++
-        } else {
-            break
+    for(i in 1 .. set.size+1){
+        if(!set.contains(i)){
+            return i
         }
     }
-    
-    return count
+    return -1
 }
