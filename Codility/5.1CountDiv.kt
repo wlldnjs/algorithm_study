@@ -1,19 +1,16 @@
 /**
     https://app.codility.com/programmers/lessons/5-prefix_sums/count_div/
-    Task Score: 50%(Correctness: 100%, Performance: 0)
+    Task Score: 100%(Correctness: 100%, Performance: 100%)
 */
 fun solution(A: Int, B: Int, K: Int): Int {
     val startIndex = A
     val endIndex = B
     val divider = K
     
-    var returnCount = 0
-    
-    for(i in startIndex .. endIndex){
-        if(i.rem(divider) == 0){
-            returnCount++
-        }
+    var count = 0
+    if(startIndex.rem(divider) == 0){
+        count++
     }
     
-    return returnCount
+    return endIndex.div(divider).minus(startIndex.div(divider)).plus(count)
 }
