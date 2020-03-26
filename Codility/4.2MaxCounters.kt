@@ -1,28 +1,32 @@
 /**
     https://app.codility.com/programmers/lessons/4-counting_elements/max_counters/
-    Task Score: 90%(Correctness: 100%, Performance: 80%)
+    Task Score: 100%(Correctness: 100%, Performance: 100%)
 */
 
-fun solution(N: Int, A: IntArray): IntArray {
-    val array = IntArray(N)
+fun solution(count: Int, inputArray: IntArray): IntArray {
+    var returnArray = IntArray(count)
+    var maxCounter = 0
     var maxValue = 0
-    A.forEach{
-        if(it > N){
-            array.max()?.let{max ->
-                maxValue = max
+    
+    for(i in inputArray.indices){
+        if(inputArray[i] <= count){
+            if(returnArray[inputArray[i]-1] < maxCounter){
+                returnArray[inputArray[i]-1] = maxCounter
+            }
+            returnArray[inputArray[i]-1]++
+            if(maxValue < returnArray[inputArray[i]-1]){
+                maxValue = returnArray[inputArray[i]-1]
             }
         } else {
-            if(array[it-1] < maxValue){
-                array[it-1] = maxValue + 1
-            } else {
-                array[it-1]++
-            }
+            maxCounter = maxValue
         }
     }
-    for(i in array.indices){
-        if(array[i] < maxValue){
-            array[i] = maxValue
+    
+    for(i in returnArray.indices){
+        if(returnArray[i] < maxCounter){
+            returnArray[i] = maxCounter
         }
     }
-    return array
+    
+    return returnArray
 }
