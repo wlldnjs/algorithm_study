@@ -1,25 +1,25 @@
 /**
     https://app.codility.com/programmers/lessons/3-time_complexity/tape_equilibrium/
-    Task Score: 61%(Correctness: 71%, Performance: 50%)
+    Task Score: 100%(Correctness: 100%, Performance: 100%)
 */
 import kotlin.math.abs
-import java.util.*
 
-fun solution(inputArray: IntArray): Int {
-    val deque = ArrayDeque<Int>()
-
-    inputArray.forEach { deque.add(it) }
-    var frontSum = deque.pollFirst()
-    var endSum = deque.pollLast()
+fun solution(A: IntArray): Int {
+    var addSum = 0
+    for(i in A.indices){
+        addSum += A[i]
+    }
     
-    for(i in deque.indices){
-	
-        if(abs(frontSum) < abs(endSum)){
-            frontSum += deque.pollFirst()
-        } else {
-            endSum += deque.pollLast()
+    var frontValue = 0
+    
+    var returnValue = Integer.MAX_VALUE
+    for(i in 0 until A.size-1){
+        frontValue += A[i]
+        val temp = abs(frontValue - (addSum - frontValue))
+        if(temp < returnValue){
+            returnValue = temp
         }
     }
-
-    return abs(frontSum - endSum)
+    
+    return returnValue
 }
