@@ -22,13 +22,10 @@ fun solution(inputString: String, p: IntArray, q: IntArray): IntArray {
     var returnArray = IntArray(p.size)
     for(i in p.indices){
         for(j in counter.indices){
-            counter[j] = stringToIntArray[q[i]+1][j] - stringToIntArray[p[i]][j]
-        }
-        for(j in counter.indices){
-            if(counter[j] > 0){
-                returnArray[i] = j+1
-                break
-            }
+            if(0 < stringToIntArray[q[i]+1][j] - stringToIntArray[p[i]][j]){
+		        returnArray[i] = j+1
+		        break
+	        }
         }
     }
 
