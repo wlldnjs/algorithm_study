@@ -3,8 +3,8 @@
     Task Score: 100%(Correctness: 100%, Performance: 100%)
 */
 fun solution(inputString: String, p: IntArray, q: IntArray): IntArray {
-    val stringToIntArray = Array(inputString.length+1, { IntArray(4) })
-    
+    val stringToIntArray = Array(inputString.length + 1, { IntArray(4) })
+
     val counter = IntArray(4)
     for (i in inputString.indices) {
         when (inputString[i]) {
@@ -14,18 +14,18 @@ fun solution(inputString: String, p: IntArray, q: IntArray): IntArray {
             'T' -> counter[3]++
         }
         for (j in counter.indices) {
-            stringToIntArray[i+1][j] = counter[j]
+            stringToIntArray[i + 1][j] = counter[j]
         }
 
     }
-    
+
     var returnArray = IntArray(p.size)
-    for(i in p.indices){
-        for(j in counter.indices){
-            if(0 < stringToIntArray[q[i]+1][j] - stringToIntArray[p[i]][j]){
-		        returnArray[i] = j+1
-		        break
-	        }
+    for (i in p.indices) {
+        for (j in counter.indices) {
+            if (0 < stringToIntArray[q[i] + 1][j] - stringToIntArray[p[i]][j]) {
+                returnArray[i] = j + 1
+                break
+            }
         }
     }
 
