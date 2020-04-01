@@ -1,6 +1,6 @@
 /**
     https://app.codility.com/programmers/lessons/6-sorting/triangle/
-    Task Score: 93%(Correctness: 90%, Performance: 100%)
+    Task Score: 100%(Correctness: 100%, Performance: 100%)
 */
 fun solution(inputArray: IntArray): Int {
     val isExist = 1
@@ -11,7 +11,7 @@ fun solution(inputArray: IntArray): Int {
     } else {
         inputArray.sort()
         for(i in inputArray.size-1 downTo 2 step 1){
-            if(inputArray[i] < inputArray[i-1].plus(inputArray[i-2])){
+            if(inputArray[i].minus(inputArray[i-1])  < inputArray[i-2]){
                 return isExist
             }
         }
