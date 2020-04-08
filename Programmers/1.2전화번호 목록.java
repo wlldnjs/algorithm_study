@@ -1,6 +1,6 @@
 /**
     https://programmers.co.kr/learn/courses/30/lessons/42577
-    합계: 53.8 / 100.0(정확성: 53.8, 효율성: 0.0)
+    합계: 69.2 / 100.0(정확성: 69.2, 효율성: 0.0)
 */
 class Solution {
     public boolean solution(String[] phoneBook) {
@@ -8,11 +8,18 @@ class Solution {
             return true;
         }
         String prePhoneNumeber = phoneBook[0];
+        boolean isNotMatch = true;
+        
         for(int i=1;i<phoneBook.length;i++){
-            if(prePhoneNumeber.equals(phoneBook[i].substring(0,prePhoneNumeber.length()))){
-                return false;
+            for(int j=0; j<prePhoneNumeber.length(); j++){
+                if(phoneBook[i].charAt(j) != prePhoneNumeber.charAt(j)){
+                    break;
+                }
+                if(j == prePhoneNumeber.length()-1){
+                    isNotMatch = false;
+                }
             }
         }
-        return true;
+        return isNotMatch;
     }
 }
