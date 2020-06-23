@@ -1,0 +1,28 @@
+/**
+    https://programmers.co.kr/learn/courses/30/lessons/42585?language=kotlin
+    합계: 100.0 / 100.0(정확성: 100.0)
+*/
+import java.util.*
+
+class Solution {
+    fun solution(arrangement: String): Int {
+        val stack = Stack<Char>()
+        var isLaser = false
+        var stickCount = 0
+        for(i in arrangement.indices){
+            if(arrangement[i] =='('){
+                stack.push('(')
+                isLaser = true
+            } else{
+                stack.pop()
+                if(isLaser){
+                    stickCount += stack.size
+                    isLaser = false
+                } else{
+                    stickCount++
+                }
+            }
+        }
+        return stickCount
+    }
+}
