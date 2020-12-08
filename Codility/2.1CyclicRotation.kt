@@ -16,11 +16,13 @@ fun solution(A: IntArray, K: Int): IntArray {
 }
 
 fun solution2(array: IntArray, K: Int): IntArray {
-    val arraySize = A.size
-    val rotateNum = K % arraySize
+    val arraySize = array.size
+    val rotateNum = if (arraySize > 0) {
+        K % arraySize
+    } else K
 
     val returnArray = IntArray(arraySize)
-    array.forEachIndexed{index, item ->
+    array.forEachIndexed { index, item ->
         returnArray[(index + rotateNum) % arraySize] = item
     }
 
